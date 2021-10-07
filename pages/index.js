@@ -15,6 +15,7 @@ function Home(props) {
           {movies.map((movie) => (
             <Movie
               key={movie.id}
+              id={movie.id}
               year={movie.year}
               title={movie.title}
               summary={movie.summary}
@@ -34,6 +35,7 @@ export async function getStaticProps(context) {
   ).then((res) => {
     return res.json();
   });
+  //yts-proxy.now.sh/movie_details.json?movie_id=5000
 
   if (!data) {
     return {
@@ -43,7 +45,7 @@ export async function getStaticProps(context) {
 
   return {
     props: { movies: data.data.movies, isLoading: false },
-    revalidate: 10,
+    revalidate: 30,
   };
 }
 

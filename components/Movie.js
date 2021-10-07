@@ -10,10 +10,8 @@ function Movie({ id, title, year, summary, poster, genres }) {
     <div className={styles.movie}>
       <Link
         href={{
-          pathname: "/movie-detail",
-          query: { year, title, summary, poster, genres },
+          pathname: `/movie-detail/${id}`,
         }}
-        passHref
       >
         <Image
           src={poster}
